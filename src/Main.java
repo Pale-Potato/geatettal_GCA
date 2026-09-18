@@ -23,7 +23,7 @@ void main() {
 
         cChoice = computerChoice(max);
 
-        System.out.println(cChoice); //tester
+        //System.out.println(cChoice); //tester
 
         if (guesses < 0) {
             System.out.println("Antal gæt: ubegrænset");
