@@ -60,7 +60,7 @@ void main() {
 
         } while ((check != 1) && (guesses != 0));
 
-        points = pointsCal(guesses, choice);
+        points = pointsCal(guesses, choice, check);
 
         //end print
         if (check == 1) {
@@ -125,7 +125,7 @@ static int computerChoice (int max) {
     return target;
 }
 
-static int guessChecker (int playerGuess, int computerChoice) {
+public static int guessChecker (int playerGuess, int computerChoice) {
     int checker;
     int differens = playerGuess - computerChoice;
     if (differens == 0) {
@@ -144,18 +144,20 @@ static int guessChecker (int playerGuess, int computerChoice) {
     return checker;
 }
 
-static int pointsCal(int guesses, int choice) {
+public static int pointsCal(int guesses, int choice, int check) {
     int points;
-    if ((choice == 1 && guesses <-10) || (choice == 2 && guesses == 0) || (choice == 3 && guesses == 0)) {
+    if ((choice == 1 && guesses <-11 && check ==1) || (choice == 2 && guesses == 0 && check !=1) || (choice == 3 && guesses == 0 && check !=1)) {
         points = 0;
+    } else if ((choice == 1 && guesses ==-2 && check ==1) || (choice == 2 && guesses == 9 && check ==1) || (choice == 3 && guesses == 6 && check ==1)) {
+        points = 100;
     } else if (choice == 2) {
-        points = (guesses + 1) * (100/tries(choice));
+        points = (guesses+1) * (100/tries(choice));
     }else if (choice == 3) {
-        points = (guesses) * (100/tries(choice)) +16;
-    } else if (choice == 1 && guesses >= -10){ //let
+        points = (guesses+1) * (100/tries(choice));
+    } else if (choice == 1 && guesses >= -11 && check ==1){ //let
         points = 100 + ((guesses+2) * 10);
     } else  {
-        points = -1;
+        points = -99999; //fejlkode
     }
     return points;
 }
